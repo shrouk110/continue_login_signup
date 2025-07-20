@@ -15,19 +15,36 @@ class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteApp,
-      body: Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
-          height: containerHeight,
-          decoration: BoxDecoration(
-            color: AppColors.mainColor,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              'assets/images/boy.png',
+              height: MediaQuery.of(context).size.height - containerHeight,
+              fit: BoxFit.cover,
+            ),
           ),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
-            child: child,
+
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: containerHeight,
+              decoration: BoxDecoration(
+                color: AppColors.mainColor,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(20),
+                child: child,
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
